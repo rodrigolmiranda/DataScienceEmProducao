@@ -47,26 +47,29 @@ df1['competition_distance'] = df1['competition_distance'].apply( lambda x: 20000
 
 
 #%% 1.5 Fillout NA # competition_open_since_month    323348
-df1['competition_open_since_month'] =  df1.apply( lambda x: df1['date'].dt.month if math.isnan(x['competition_open_since_month']) else x['competition_open_since_month'], axis=1 )
+df1['competition_open_since_month'] =  df1.apply( lambda x: x['date'].month if math.isnan(x['competition_open_since_month']) else x['competition_open_since_month'], axis=1 )
 
 #%% 1.5 Fillout NA # competition_open_since_year     323348
-df1['competition_open_since_year'] =  df1.apply( lambda x: df1['date'].dt.year if math.isnan(x['competition_open_since_year']) else x['competition_open_since_year'], axis=1 )
+df1['competition_open_since_year'] =  df1.apply( lambda x: x['date'].year if math.isnan(x['competition_open_since_year']) else x['competition_open_since_year'], axis=1 )
 
 #%% 1.5 Fillout NA # promo2_since_week               508031
-df1['promo2_since_week'] =  df1.apply( lambda x: df1['date'].dt.week if math.isnan(x['promo2_since_week']) else x['promo2_since_week'], axis=1 )
+df1['promo2_since_week'] =  df1.apply( lambda x: x['date'].week if math.isnan(x['promo2_since_week']) else x['promo2_since_week'], axis=1 )
 
 #%% 1.5 Fillout NA # promo2_since_year               508031
-df1['promo2_since_year'] =  df1.apply( lambda x: df1['date'].dt.year if math.isnan(x['promo2_since_year']) else x['promo2_since_year'], axis=1 )
+df1['promo2_since_year'] =  df1.apply( lambda x: x['date'].year if math.isnan(x['promo2_since_year']) else x['promo2_since_year'], axis=1 )
 
 
 
 
-#%%
+#%% 1.6 create columns promo interval, promo_map, ispromo
 # df1["date"].month
-
 month_map = {1: "Jan", 2: "Fev", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dez" }
+
 df1["promo_interval"].fillna(0, inplace=True)
+
 df1["month_map"] = df1["date"].dt.month.map (month_map)
+
+df1["ispromo"] = df1[['promo_interval', 'month_map']].apply(lambda x: 0 if x["promo_interval"] == 0 else 1 if x["month_map"] in x["promo_interval"].split(',') else 0, axis=1)
+
 #%%
-df1.sample(5)["date"].dt.year
-df1.sample(5)["date"]
+# df1.sample(5).T
