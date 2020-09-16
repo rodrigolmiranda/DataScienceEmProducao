@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/home/rlemiran/.pyenv/versions/DataScienceEmProducao/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.dataScience.jupyterServerURI": "local"
+}
