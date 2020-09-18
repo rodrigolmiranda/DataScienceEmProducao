@@ -2,5 +2,12 @@
     "python.pythonPath": "/home/rlemiran/.pyenv/versions/DataScienceEmProducao/bin/python",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.dataScience.jupyterServerURI": "local"
+    "python.dataScience.jupyterServerURI": "local",
+    "code-runner.executorMap": {
+        "python": "/home/rlemiran/.pyenv/versions/DataScienceEmProducao/bin/python"
+    },
+    "python.testing.promptToConfigure": false,
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false
 }
