@@ -139,3 +139,7 @@ sns.boxplot(x="assortment", y="sales", data=aux1)
 
 # %% 2.0 Step 02 - FEATURE ENGINEERING
 Image('IMG/mindmaphipotesis.png')
+
+# %% 2.1 Hipotesis creation
+
+# %% 2.1.1 Hipotesis creation
